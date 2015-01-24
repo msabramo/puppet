@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+'''
+  Usage: simple [options] command
+
+  Options:
+
+    -h, --help                 output this information
+    -V, --version              output the version number
+'''
+
+from puppet import puppet
+
+puppet('simple', '0.1.0', plugin=True)
+
+
+def main(program):
+    print('main')
