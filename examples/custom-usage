@@ -13,7 +13,7 @@
 import sys
 from puppet import puppet
 
-puppet('simple', '0.1.0', plugin=True)
+puppet('simple', '0.1.0')
 
 
 def main(program):
