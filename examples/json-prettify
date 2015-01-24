@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+'''
+  Usage: json-prettify [options] json
+
+  Options:
+
+    -h, --help                 output this information
+    -V, --version              output the version number
+    -i, --indent               [default: 4]
+    -s, --sort                 [default: True]
+'''
+
+import json
+from puppet import puppet
+
+puppet('simple', '0.1.0')
+
+
+def main(program):
+    if len(program.args) > 0:
+        data = json.loads(program.args[0])
+        print(json.dumps(data, sort_keys=program.flags.sort,
+                         indent=program.flags.indent))
