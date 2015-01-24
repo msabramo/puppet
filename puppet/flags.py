@@ -13,7 +13,7 @@ class Flags:
 
     def build_alias(self):
         setters = self.doc['setters']
-        for name, value in self.argv.items():
+        for name, value in list(self.argv.items()):
             setter = setters.get(name, None)
             setter and setter(self.argv, value)
 
