@@ -7,6 +7,7 @@ from json import loads as json_loads
 FLOAT_RE = re.compile('^(?P<int>\d+)?\.(?(int)(?:\d+)?|\d+)$')
 REL_PATH_RE = re.compile('^\.\.?' + os.sep)
 JSON_RE = re.compile('^[{\[\'"n]')
+BOOL_RE = re.compile('^(?:[tT]rue|[fF]alse)$')
 
 
 def json(value):
@@ -43,5 +44,8 @@ def mix(value):
             return json(value)
         except:
             pass
+
+    if BOOL_RE.match(value):
+        return value.lower() == 'true'
 
     return value
