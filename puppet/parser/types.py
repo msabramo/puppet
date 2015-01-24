@@ -23,6 +23,9 @@ def mix(value):
     if value is None:
         return True
 
+    if not isinstance(value, str):
+        return value
+
     if value.isdigit():
         return int(value)
 

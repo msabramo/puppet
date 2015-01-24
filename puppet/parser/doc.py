@@ -4,7 +4,7 @@ import re
 from .types import json, path, mix
 
 # Usage: ...
-NEW_SECTION_RE = re.compile('^\s*([^:]+):')
+NEW_SECTION_RE = re.compile('^\s*([^\[\]:]+):')
 
 # Optinos: ...
 OPTS_SETION_RE = re.compile('options', re.I)
@@ -28,7 +28,7 @@ ARG_DESC_RE = re.compile('^'
                          ')+'                                   # arg end
                          ')'                                    # args end
                          '(?P<desc>'                            # desc start
-                         '.*'                                   # desc
+                         '.*?'                                   # desc
                          '(?:\[default:\s*(?P<def>.*?)\])?'     # default value
                          ')'                                    # desc end
                          '$')

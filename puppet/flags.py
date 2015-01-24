@@ -9,6 +9,7 @@ class Flags:
         self.argv = argv
         self.args = args
         self.doc = parse_doc(doc)
+        self.set_default_values()
         self.build_alias()
 
     def build_alias(self):
@@ -16,6 +17,14 @@ class Flags:
         for name, value in list(self.argv.items()):
             setter = setters.get(name, None)
             setter and setter(self.argv, value)
+
+    def set_default_values(self):
+        setters = self.doc['setters']
+        for arg in self.doc['args']:
+            name = list(arg['names'])[0]
+            setter = setters.get(name, None)
+            if arg['default'] and setter:
+                setter(self.argv, arg['default'])
 
     def __getattr__(self, name):
         return self.get(name)
