@@ -1,3 +1,8 @@
+puppet
+======
+
+[![travis](https://img.shields.io/travis/joyent/node.svg?style=flat)](https://travis-ci.org/poying/puppet)
+
 ### Examples
 
 ```bash
