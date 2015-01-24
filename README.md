@@ -1,7 +1,7 @@
 puppet
 ======
 
-[![travis](https://img.shields.io/travis/joyent/node.svg?style=flat)](https://travis-ci.org/poying/puppet)
+[![travis](https://img.shields.io/travis/poying/puppet.svg?style=flat)](https://travis-ci.org/poying/puppet)
 
 ### Examples
 
