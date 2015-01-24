@@ -12,8 +12,8 @@
 
 from puppet import puppet
 
-puppet('simple', '0.1.0', plugin=True)
+puppet('simple', '0.1.0', subcmd=True)
 
 
 def main(program):
-    print('main')
+    print('subcommand')

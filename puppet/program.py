@@ -17,12 +17,12 @@ class Program:
                  version='0.1.0',
                  doc=main.__doc__,
                  argv=sys.argv[1:],
-                 plugin=False):
+                 subcmd=False):
 
         self.origin_argv = argv
         self.name = name if name else sys.argv[0]
         self.version = version
-        self.plugin = plugin
+        self.subcmd = subcmd
         self.flags = Flags(argv, doc)
 
     @property
@@ -42,16 +42,16 @@ class Program:
         return self.doc['usage']
 
     def start(self):
-        if self.plugin:
-            self.run_plugin()
+        if self.subcmd:
+            self.run_subcmd()
 
         self.run_handlers()
         main_function = getattr(main, 'main', None)
         if main_function:
             main_function(self)
 
-    def run_plugin(self, index=0):
-        bin_file = self.plugin_bin_file(index)
+    def run_subcmd(self, index=0):
+        bin_file = self.subcmd_bin_file(index)
 
         if bin_file is None:
             return
@@ -62,15 +62,15 @@ class Program:
 
         sys.exit(code)
 
-    def plugin_bin_file(self, index=0):
-        name = self.plugin_name(index)
+    def subcmd_bin_file(self, index=0):
+        name = self.subcmd_name(index)
         if name:
             name = '%s-%s' % (self.name, name)
             paths = os.environ['PATH'].split(os.pathsep)
             paths.insert(0, main_module_location)
             return util.which(name, paths)
 
-    def plugin_name(self, index=0):
+    def subcmd_name(self, index=0):
         if len(self.args) > 0:
             return self.args[0]
 
