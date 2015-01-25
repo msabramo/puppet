@@ -13,8 +13,8 @@ setup(
     author='Po-Ying Chen',
     author_email='poying.me@gmail.com',
     packages=[
-        'ptt_crawler',
-        'ptt_crawler.parser',
+        'puppet',
+        'puppet.parser',
     ],
     platforms='any',
     install_requires=[
