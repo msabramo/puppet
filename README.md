@@ -1,15 +1,25 @@
-puppet [![travis](https://img.shields.io/travis/poying/puppet.svg?style=flat)](https://travis-ci.org/poying/puppet)
+[![travis](https://img.shields.io/travis/poying/puppet.svg?style=flat)](https://travis-ci.org/poying/puppet)
+
+Extensible CLI programs, the easy way
+
+puppet 
 ======
 
-__main feature__: git-like subcommands. Others can write third-party subcomand in there favorite language. [example](./examples/simple)
+Every subcommand in puppet is a single executable file and every single file focus on one thing, so the codes is readable and others can write third-party subcommand in their favorite language. [[example](./examples/simple)]
 
 ```bash
 $ pip install puppet
 ```
 
-## Quick Start
+### Main features
 
-### Write usage information/configuration
+* Extensibility - git-like subcommand（ex: [git-extra](https://github.com/tj/git-extras)）
+* Clean code - every lines of code you write for puppet is meaningful.
+* Readability - Puppet let developers handle different options in different functions and put the most important codes at top of file.
+
+## Quickstart
+
+You have to write usage information at top of file, this information also be a options configuration.
 
 ```python
 '''
@@ -24,9 +34,9 @@ $ pip install puppet
 '''
 ```
 
-[option types](./puppet/parser/doc.py#L37)
+Have you noticed it? we put data type `<int>` after option name `--indent`, this line of configuration tells puppet to converts `indent ` value from string to integer. [[all data types](./puppet/parser/doc.py#L37)]。
 
-### Start cli program
+Then we have to `import` puppet, set program name and the version number:
 
 ```python
 from puppet import puppet
@@ -34,27 +44,14 @@ from puppet import puppet
 puppet('simple', '0.1.0')
 ```
 
-### Define `main` function
-
-`main` is a entry point of our cli program
+Final, we define `main` function, it is the entry point for our program:
 
 ```python
 def main(program):
-    # do something
+    print('main')
 ```
 
-### Custom option handler
-
-```python
-def option_name_or_alias_name(program, value):
-    # do something
-
-def help(program, value):
-    print('custom usage information')
-    sys.exit()
-```
-
-## Examples
+### More examples
 
 [./examples](./examples)
 
