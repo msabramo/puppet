@@ -8,6 +8,7 @@ with open('puppet/__init__.py') as f:
 setup(
     name='puppet',
     version=version,
+    description='Extensible CLI programs, the easy way',
     url='https://github.com/poying/puppet',
     license='MIT',
     author='Po-Ying Chen',
